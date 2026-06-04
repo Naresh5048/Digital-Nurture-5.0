@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Local Community Event Portal - Register for events and check locations">
+    <title>Community Event Portal | Cognizant FSE Module 1</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        h1 {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        #welcomeBanner {
+            background-color: #3498db;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .special-offer {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-calendar-check"></i> Event Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#registration">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="help.html" target="_blank">
+                        <i class="fas fa-question-circle"></i> Help
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <section id="home" class="mb-5">
+            <div id="welcomeBanner">
+                <h1>Welcome to Community Events Hub</h1>
+                <p class="lead mb-0">Discover, Register, and Participate in Local Activities</p>
+                <p class="mt-3">
+                    <span class="special-offer">Limited Time Offer: 20% Discount on First Registration!</span>
+                </p>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-8 mx-auto">
+                    <p class="lead">
+                        Welcome to the <span class="highlight">Local Community Event Portal</span> – your gateway to 
+                        vibrant community experiences. Whether you're interested in cultural events, workshops, 
+                        or fitness activities, you'll find everything here!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="events" class="mb-5">
+            <h2 class="mb-4 border-bottom pb-2">Upcoming Events</h2>
+            <div class="row g-4" id="eventsList">
+            </div>
+        </section>
+        <section id="gallery" class="mb-5">
+            <h2 class="mb-4 border-bottom pb-2">Community Events Gallery</h2>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th colspan="3" class="text-center">Past & Upcoming Community Events</th>
+                        </tr>
+                    </thead>
+                    <tbody id="galleryTable">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="registration" class="mb-5">
+            <h2 class="mb-4 border-bottom pb-2">Register for an Event</h2>
+            
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <form id="registrationForm" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="name" 
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                                autofocus>
+                            <div class="invalid-feedback">Name is required.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input 
+                                type="email" 
+                                class="form-control" 
+                                id="email" 
+                                name="email"
+                                placeholder="your.email@example.com"
+                                required>
+                            <div class="invalid-feedback">Valid email is required.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input 
+                                type="tel" 
+                                class="form-control" 
+                                id="phone" 
+                                name="phone"
+                                placeholder="123-456-7890"
+                                onblur="validatePhoneNumber(this)">
+                            <small id="phoneError" class="text-danger"></small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDate" class="form-label">Preferred Event Date</label>
+                            <input 
+                                type="date" 
+                                class="form-control" 
+                                id="eventDate" 
+                                name="eventDate"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventType" class="form-label">Event Type</label>
+                            <select 
+                                class="form-select" 
+                                id="eventType" 
+                                name="eventType"
+                                onchange="displayEventFee(this)"
+                                required>
+                                <option value="">-- Select Event Type --</option>
+                                <option value="workshop">Workshop ($15)</option>
+                                <option value="seminar">Seminar ($25)</option>
+                                <option value="sports">Sports Activity ($10)</option>
+                                <option value="cultural">Cultural Event (Free)</option>
+                                <option value="networking">Networking Event ($20)</option>
+                            </select>
+                            <small id="feeDisplay" class="d-block text-info mt-2"></small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendees" class="form-label">Number of Attendees</label>
+                            <input 
+                                type="number" 
+                                class="form-control" 
+                                id="attendees" 
+                                name="attendees"
+                                min="1" 
+                                max="5"
+                                value="1"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message or Special Requests</label>
+                            <textarea 
+                                class="form-control" 
+                                id="message" 
+                                name="message"
+                                placeholder="Any dietary restrictions, accessibility needs, etc."
+                                rows="4"
+                                onkeyup="countCharacters(this)"></textarea>
+                            <small id="charCount" class="d-block text-secondary">0 characters</small>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input 
+                                type="checkbox" 
+                                class="form-check-input" 
+                                id="terms" 
+                                name="terms"
+                                required>
+                            <label class="form-check-label" for="terms">
+                                I agree to the terms and conditions
+                            </label>
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary btn-lg w-100"
+                            onclick="handleFormSubmit(event)">
+                            <i class="fas fa-check-circle"></i> Register Now
+                        </button>
+                    </form>
+                    <div id="confirmationMessage" class="alert alert-success mt-4 d-none" role="alert">
+                        <h4 class="alert-heading">Registration Successful!</h4>
+                        <p id="confirmationText"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="feedback" class="mb-5">
+            <h2 class="mb-4 border-bottom pb-2">Event Feedback & Interaction</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Community Event Photo</h5>
+                            <img 
+                                id="eventImage" 
+                                src="https://via.placeholder.com/300x200?text=Community+Event" 
+                                alt="Community Event Photo"
+                                class="img-fluid rounded"
+                                ondblclick="enlargeImage(this)"
+                                style="cursor: pointer; border: 2px solid #3498db;">
+                            <small class="d-block text-muted mt-2">(Double-click to enlarge)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Your Feedback</h5>
+                            <div class="mb-3">
+                                <label for="rating" class="form-label">Rate Your Experience</label>
+                                <select 
+                                    class="form-select" 
+                                    id="rating" 
+                                    onchange="updateRatingDisplay(this)">
+                                    <option value="">Select rating...</option>
+                                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                    <option value="4">⭐⭐⭐⭐ Very Good</option>
+                                    <option value="3">⭐⭐⭐ Good</option>
+                                    <option value="2">⭐⭐ Fair</option>
+                                    <option value="1">⭐ Poor</option>
+                                </select>
+                                <small id="ratingDisplay" class="d-block text-info mt-2"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="comments" class="form-label">Comments</label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="comments" 
+                                    rows="3"
+                                    placeholder="Share your experience..."
+                                    onkeydown="handleCommentKeydown(event)"></textarea>
+                            </div>
+
+                            <button 
+                                type="button" 
+                                class="btn btn-success w-100"
+                                onclick="submitFeedback()">
+                                Submit Feedback
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="video" class="mb-5">
+            <h2 class="mb-4 border-bottom pb-2">Event Promo Video</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <video 
+                                id="eventVideo"
+                                width="100%" 
+                                height="auto"
+                                controls
+                                oncanplay="handleVideoReady()">
+                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p id="videoStatus" class="mt-3 text-muted"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="preferences" class="mb-5">
+            <h2 class="mb-4 border-bottom pb-2">User Preferences</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Save Your Preferences</h5>
+                            <p class="text-muted">Select your favorite event type and it will be saved for next time.</p>
+                            
+                            <div class="mb-3">
+                                <label for="preferredType" class="form-label">Preferred Event Type</label>
+                                <select 
+                                    class="form-select" 
+                                    id="preferredType"
+                                    onchange="savePreferences()">
+                                    <option value="">-- Select --</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="seminar">Seminar</option>
+                                    <option value="sports">Sports</option>
+                                    <option value="cultural">Cultural</option>
+                                </select>
+                            </div>
+
+                            <button 
+                                type="button" 
+                                class="btn btn-warning w-100"
+                                onclick="clearPreferences()">
+                                <i class="fas fa-trash"></i> Clear All Preferences
+                            </button>
+
+                            <p id="preferenceStatus" class="mt-3 text-info small"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Find Nearby Events</h5>
+                            <p class="text-muted">Enable location to see events near you.</p>
+                            
+                            <button 
+                                type="button" 
+                                class="btn btn-info w-100"
+                                onclick="findNearbyEvents()">
+                                <i class="fas fa-map-marker-alt"></i> Get My Location
+                            </button>
+
+                            <div id="locationInfo" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="bg-dark" text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="small">Community Event Portal helps residents connect, learn, and celebrate together.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="#events" class="text-decoration-none text-info">Events</a></li>
+                        <li><a href="#registration" class="text-decoration-none text-info">Register</a></li>
+                        <li><a href="help.html" class="text-decoration-none text-info">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div>
+                        <a href="#" class="text-info me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-info me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-info me-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-secondary">
+            <div class="text-center small">
+                <p>&copy; 2026 Local Community Event Portal | Module 1 - Cognizant FSE Training</p>
+            </div>
+        </div>
+    </footer>
+    <div id="imageModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Event Photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="enlargedImage" src="" alt="Enlarged Event Photo" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        console.log("Welcome to the Community Portal - Page Loaded Successfully!");
+        window.addEventListener('load', function() {
+            console.log("All resources loaded - DOM Ready");
+        });
+        function validatePhoneNumber(input) {
+            const phoneRegex = /^[0-9\-\+\(\)\s]+$/;
+            const errorEl = document.getElementById('phoneError');
+            if (input.value && !phoneRegex.test(input.value)) {
+                errorEl.textContent = "Invalid phone format. Use: 123-456-7890";
+                input.classList.add('is-invalid');
+            } else {
+                errorEl.textContent = "";
+                input.classList.remove('is-invalid');
+            }
+        }
+        function displayEventFee(select) {
+            const fees = {
+                "workshop": "$15",
+                "seminar": "$25",
+                "sports": "$10",
+                "cultural": "Free",
+                "networking": "$20"
+            };
+            const feeDisplay = document.getElementById('feeDisplay');
+            if (select.value) {
+                feeDisplay.textContent = `Fee: ${fees[select.value]}`;
+            } else {
+                feeDisplay.textContent = "";
+            }
+        }
+        function countCharacters(textarea) {
+            const charCount = document.getElementById('charCount');
+            charCount.textContent = `${textarea.value.length} characters`;
+        }
+        function enlargeImage(img) {
+            const enlargedImage = document.getElementById('enlargedImage');
+            enlargedImage.src = img.src;
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            modal.show();
+        }
+        function handleCommentKeydown(event) {
+            if (event.key === 'Enter' && event.ctrlKey) {
+                submitFeedback();
+            }
+        }
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('registrationForm');
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const eventType = document.getElementById('eventType').value;
+            const confirmationDiv = document.getElementById('confirmationMessage');
+            const confirmationText = document.getElementById('confirmationText');
+            confirmationText.innerHTML = `
+                <strong>${name}</strong>, your registration is complete! <br>
+                Confirmation email will be sent to <strong>${email}</strong>. <br>
+                Event Type: <strong>${eventType}</strong>
+            `;
+            confirmationDiv.classList.remove('d-none');
+            form.reset();
+            form.classList.remove('was-validated');
+            console.log("Registration submitted:", {name, email, eventType});
+        }
+        function updateRatingDisplay(select) {
+            const ratingDisplay = document.getElementById('ratingDisplay');
+            if (select.value) {
+                ratingDisplay.textContent = `✓ Rating set to ${select.value} stars`;
+            } else {
+                ratingDisplay.textContent = "";
+            }
+        }
+        function submitFeedback() {
+            const rating = document.getElementById('rating').value;
+            const comments = document.getElementById('comments').value;
+            if (!rating || !comments) {
+                alert('Please provide both rating and comments');
+                return;
+            }
+            alert(`Feedback submitted! Rating: ${rating} stars\nComments: ${comments}`);
+            document.getElementById('rating').value = '';
+            document.getElementById('comments').value = '';
+            document.getElementById('ratingDisplay').textContent = '';
+            console.log("Feedback submitted:", {rating, comments});
+        }
+        function handleVideoReady() {
+            document.getElementById('videoStatus').textContent = "✓ Video ready to play!";
+        }
+        function savePreferences() {
+            const preferredType = document.getElementById('preferredType').value;
+            if (preferredType) {
+                localStorage.setItem('preferredEventType', preferredType);
+                document.getElementById('preferenceStatus').textContent = `✓ Preference saved: ${preferredType}`;
+                console.log("Preferences saved to localStorage");
+            }
+        }
+        function clearPreferences() {
+            localStorage.clear();
+            sessionStorage.clear();
+            document.getElementById('preferredType').value = '';
+            document.getElementById('preferenceStatus').textContent = '✓ All preferences cleared!';
+            console.log("All preferences cleared");
+        }
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedPreference = localStorage.getItem('preferredEventType');
+            if (savedPreference) {
+                document.getElementById('preferredType').value = savedPreference;
+                document.getElementById('preferenceStatus').textContent = `✓ Loaded: ${savedPreference}`;
+            }
+        });
+        function findNearbyEvents() {
+            if (!navigator.geolocation) {
+                document.getElementById('locationInfo').innerHTML = '<div class="alert alert-danger">Geolocation not supported</div>';
+                return;
+            }
+            const locationInfo = document.getElementById('locationInfo');
+            locationInfo.innerHTML = '<div class="alert alert-info">Getting location...</div>';
+            const options = { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 };
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude, accuracy } = position.coords;
+                    locationInfo.innerHTML = `
+                        <div class="alert alert-success">
+                            <strong>Your Location:</strong><br>
+                            Latitude: ${latitude.toFixed(4)}, Longitude: ${longitude.toFixed(4)}<br>
+                            Accuracy: ${accuracy.toFixed(0)} meters<br>
+                            Events near you will be displayed here.
+                        </div>
+                    `;
+                    console.log("Location found:", {latitude, longitude});
+                },
+                (error) => {
+                    let errorMsg = '';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMsg = "Permission denied. Please enable location in browser settings.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMsg = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            errorMsg = "Request timeout.";
+                            break;
+                    }
+                    locationInfo.innerHTML = `<div class="alert alert-warning">${errorMsg}</div>`;
+                    console.error("Location error:", error);
+                },
+                options
+            );
+        }
+        window.addEventListener('beforeunload', function(event) {
+            const form = document.getElementById('registrationForm');
+            const hasContent = form.name.value || form.email.value;
+            if (hasContent) {
+                event.preventDefault();
+                event.returnValue = '';
+                return '';
+            }
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

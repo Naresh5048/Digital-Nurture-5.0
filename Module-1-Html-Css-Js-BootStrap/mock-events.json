@@ -1,0 +1,202 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Python Programming Workshop",
+      "description": "Learn Python fundamentals including syntax, data types, functions, and OOP in a hands-on 2-hour session",
+      "date": "2026-06-15",
+      "time": "10:00 AM",
+      "duration": "2 hours",
+      "location": "Community Center, Main Hall",
+      "category": "workshop",
+      "price": 15,
+      "availableSeats": 30,
+      "totalSeats": 30,
+      "instructor": "Sarah Johnson",
+      "prerequisites": "Basic computer knowledge",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Python+Workshop"
+    },
+    {
+      "id": 2,
+      "name": "Digital Marketing & Social Media Seminar",
+      "description": "Master content strategy, hashtag optimization, and engagement tactics for Facebook, Instagram, and TikTok",
+      "date": "2026-06-20",
+      "time": "2:00 PM",
+      "duration": "3 hours",
+      "location": "City Hall, Conference Room A",
+      "category": "seminar",
+      "price": 25,
+      "availableSeats": 50,
+      "totalSeats": 50,
+      "instructor": "Mike Chen",
+      "prerequisites": "Social media account (optional)",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Digital+Marketing"
+    },
+    {
+      "id": 3,
+      "name": "Community Sports Day",
+      "description": "Join us for soccer, basketball, running races, and badminton. All skill levels welcome! Refreshments provided.",
+      "date": "2026-06-22",
+      "time": "8:00 AM",
+      "duration": "4 hours",
+      "location": "Central Park, Sports Complex",
+      "category": "sports",
+      "price": 10,
+      "availableSeats": 100,
+      "totalSeats": 100,
+      "instructor": "Community Sports Team",
+      "prerequisites": "Comfortable athletic wear",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Sports+Day"
+    },
+    {
+      "id": 4,
+      "name": "Summer Cultural Festival 2026",
+      "description": "Experience diverse music, international food vendors, art exhibitions, and live performances from our community",
+      "date": "2026-07-01",
+      "time": "5:00 PM",
+      "duration": "5 hours",
+      "location": "Town Square, Main Stage",
+      "category": "cultural",
+      "price": 0,
+      "availableSeats": 200,
+      "totalSeats": 200,
+      "instructor": "Cultural Events Committee",
+      "prerequisites": "None - open to all",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Cultural+Festival"
+    },
+    {
+      "id": 5,
+      "name": "Business Networking & Entrepreneurship Event",
+      "description": "Connect with entrepreneurs, investors, and business professionals. Includes keynote speech and speed networking sessions",
+      "date": "2026-07-05",
+      "time": "6:00 PM",
+      "duration": "2.5 hours",
+      "location": "Grand Hotel, Ballroom",
+      "category": "networking",
+      "price": 20,
+      "availableSeats": 75,
+      "totalSeats": 75,
+      "instructor": "Business Development Team",
+      "prerequisites": "Business cards recommended",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Networking"
+    },
+    {
+      "id": 6,
+      "name": "Photography Basics for Beginners",
+      "description": "Learn composition, lighting, and camera settings. Bring your smartphone or DSLR. Outdoor photo shoot included",
+      "date": "2026-07-08",
+      "time": "9:00 AM",
+      "duration": "3 hours",
+      "location": "Riverside Park",
+      "category": "workshop",
+      "price": 18,
+      "availableSeats": 20,
+      "totalSeats": 20,
+      "instructor": "James Rodriguez",
+      "prerequisites": "Camera or smartphone",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Photography"
+    },
+    {
+      "id": 7,
+      "name": "Yoga & Wellness Session",
+      "description": "Beginner-friendly yoga session focusing on flexibility, mindfulness, and stress relief. Mat provided",
+      "date": "2026-07-10",
+      "time": "7:00 AM",
+      "duration": "1.5 hours",
+      "location": "Central Park, Meadow Area",
+      "category": "sports",
+      "price": 5,
+      "availableSeats": 40,
+      "totalSeats": 40,
+      "instructor": "Emily Watson",
+      "prerequisites": "Comfortable clothing",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Yoga+Session"
+    },
+    {
+      "id": 8,
+      "name": "Environmental Sustainability Talk",
+      "description": "Expert panel discussion on climate change, renewable energy, and how to reduce your carbon footprint",
+      "date": "2026-07-12",
+      "time": "1:00 PM",
+      "duration": "2 hours",
+      "location": "Library Community Room",
+      "category": "seminar",
+      "price": 0,
+      "availableSeats": 60,
+      "totalSeats": 60,
+      "instructor": "Dr. Patricia Green",
+      "prerequisites": "None",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Sustainability"
+    },
+    {
+      "id": 9,
+      "name": "Creative Writing Workshop",
+      "description": "Explore storytelling techniques, character development, and publish your first short story",
+      "date": "2026-07-15",
+      "time": "3:00 PM",
+      "duration": "2.5 hours",
+      "location": "Arts Center, Studio 3",
+      "category": "workshop",
+      "price": 22,
+      "availableSeats": 15,
+      "totalSeats": 15,
+      "instructor": "Lisa Anderson",
+      "prerequisites": "Passion for writing",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Creative+Writing"
+    },
+    {
+      "id": 10,
+      "name": "Tech Skills for Career Advancement",
+      "description": "Accelerate your tech career: Git, APIs, databases, and landing your first developer role",
+      "date": "2026-07-18",
+      "time": "6:00 PM",
+      "duration": "3 hours",
+      "location": "Tech Hub Downtown",
+      "category": "seminar",
+      "price": 35,
+      "availableSeats": 25,
+      "totalSeats": 25,
+      "instructor": "Alex Kim",
+      "prerequisites": "Basic programming knowledge",
+      "imageUrl": "https://via.placeholder.com/300x200?text=Tech+Skills"
+    }
+  ],
+  "categories": [
+    {
+      "id": "workshop",
+      "name": "Workshop",
+      "description": "Hands-on learning sessions",
+      "icon": "fa-graduation-cap"
+    },
+    {
+      "id": "seminar",
+      "name": "Seminar",
+      "description": "Expert talks and discussions",
+      "icon": "fa-microphone"
+    },
+    {
+      "id": "sports",
+      "name": "Sports Activity",
+      "description": "Physical activities and fitness",
+      "icon": "fa-basketball"
+    },
+    {
+      "id": "cultural",
+      "name": "Cultural Event",
+      "description": "Music, art, and cultural experiences",
+      "icon": "fa-music"
+    },
+    {
+      "id": "networking",
+      "name": "Networking Event",
+      "description": "Professional connections and conversations",
+      "icon": "fa-handshake"
+    }
+  ],
+  "metadata": {
+    "totalEvents": 10,
+    "lastUpdated": "2026-05-28",
+    "apiVersion": "1.0",
+    "description": "Mock event data for Community Event Portal - Module 1 Training"
+  }
+}
